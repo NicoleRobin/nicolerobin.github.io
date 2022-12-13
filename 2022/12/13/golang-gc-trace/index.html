@@ -20,23 +20,28 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"nicolerobin.top","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.14.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
-    <meta property="og:type" content="website">
-<meta property="og:title" content="听香水榭">
-<meta property="og:url" content="http://nicolerobin.top/index.html">
+    <meta name="description" content="golang提供了丰富的工具用来查看服务运行时状态，这次就来看一下如何查看golang服务的gc运行时信息。 这里我们以下面这段代码为例子来观察gc的信息，该代码在map中存储了大量的对象，这些对象会对gc造成很大的压力，导致gc每次都需要对他们进行扫描。 123456789101112131415161718192021222324252627282930package mainimport &amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="golang调试、查看gc信息">
+<meta property="og:url" content="http://nicolerobin.top/2022/12/13/golang-gc-trace/index.html">
 <meta property="og:site_name" content="听香水榭">
+<meta property="og:description" content="golang提供了丰富的工具用来查看服务运行时状态，这次就来看一下如何查看golang服务的gc运行时信息。 这里我们以下面这段代码为例子来观察gc的信息，该代码在map中存储了大量的对象，这些对象会对gc造成很大的压力，导致gc每次都需要对他们进行扫描。 123456789101112131415161718192021222324252627282930package mainimport &amp;">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-12-13T12:32:53.000Z">
+<meta property="article:modified_time" content="2022-12-13T12:46:35.216Z">
 <meta property="article:author" content="robin zhang">
+<meta property="article:tag" content="golang">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://nicolerobin.top/">
+<link rel="canonical" href="http://nicolerobin.top/2022/12/13/golang-gc-trace/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":true,"isPost":false,"lang":"en","comments":"","permalink":"","path":"index.html","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://nicolerobin.top/2022/12/13/golang-gc-trace/","path":"2022/12/13/golang-gc-trace/","title":"golang调试、查看gc信息"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>听香水榭</title>
+<title>golang调试、查看gc信息 | 听香水榭</title>
   
 
 
@@ -71,7 +76,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <h1 class="site-title">听香水榭</h1>
+      <p class="site-title">听香水榭</p>
       <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description">宠辱不惊，闲看庭前花开花落；去留无意，漫随天边云卷云舒。</p>
@@ -156,16 +161,17 @@
 
     </div>
 
-    <div class="main-inner index posts-expand">
+    <div class="main-inner post posts-expand">
 
-    
+
+  
 
 
 <div class="post-block">
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
     <link itemprop="mainEntityOfPage" href="http://nicolerobin.top/2022/12/13/golang-gc-trace/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -179,13 +185,13 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 听香水榭">
+      <meta itemprop="name" content="golang调试、查看gc信息 | 听香水榭">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/12/13/golang-gc-trace/" class="post-title-link" itemprop="url">golang调试、查看gc信息</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          golang调试、查看gc信息
+        </h1>
 
         <div class="post-meta-container">
           <div class="post-meta">
@@ -209,7 +215,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>golang提供了丰富的工具用来查看服务运行时状态，这次就来看一下如何查看golang服务的gc运行时信息。</p>
+        <p>golang提供了丰富的工具用来查看服务运行时状态，这次就来看一下如何查看golang服务的gc运行时信息。</p>
 <p>这里我们以下面这段代码为例子来观察gc的信息，该代码在map中存储了大量的对象，这些对象会对gc造成很大的压力，导致gc每次都需要对他们进行扫描。</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;time&quot;</span></span><br><span class="line"><span class="keyword">type</span> Item <span class="keyword">struct</span> &#123;</span><br><span class="line">	A <span class="type">string</span></span><br><span class="line">	B <span class="type">string</span></span><br><span class="line">	C <span class="type">string</span></span><br><span class="line">	D <span class="type">string</span></span><br><span class="line">	E <span class="type">string</span></span><br><span class="line">	F <span class="type">string</span></span><br><span class="line">	G G</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">type</span> G <span class="keyword">struct</span> &#123;</span><br><span class="line">	H <span class="type">int</span></span><br><span class="line">	I <span class="type">int</span></span><br><span class="line">	K <span class="type">int</span></span><br><span class="line">	L <span class="type">int</span></span><br><span class="line">	M <span class="type">int</span></span><br><span class="line">	N <span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	m := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]*Item, <span class="number">10</span>*<span class="number">1024</span>*<span class="number">1024</span>)</span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">1024</span>*<span class="number">1024</span>; i++ &#123;</span><br><span class="line">		m[i] = &amp;Item&#123;&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; ; i++ &#123;</span><br><span class="line">		<span class="built_in">delete</span>(m, i)</span><br><span class="line">		m[<span class="number">1024</span>*<span class="number">1024</span>+i] = &amp;Item&#123;&#125;</span><br><span class="line">		time.Sleep(<span class="number">10</span> * time.Millisecond)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -222,7 +228,6 @@
 <p>这些输出信息的含义如下：</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">1. gc 2 @120.093s：第65次执行，进程已经启动16.996秒</span><br><span class="line">2. 0%：本次执行gc占用的进程cpu时间的百分比</span><br><span class="line">3. 0.050+173+0.002 ms clock：本次gc的耗时。依次是STW清扫的时间, 并发标记和扫描的时间，STW标记的时间。（STW即stop-the-world，STW时间内进程完全被挂起），可以看到标记阶段的耗时非常高，达到了173ms。</span><br><span class="line">4. 0.40+0/344/0+0.023 ms cpu：本次gc占用cpu时间</span><br><span class="line">5. 453-&gt;453-&gt;450 MB：堆的大小，gc后堆的大小，存活堆的大小</span><br><span class="line">6. 612 MB goal：堆的大小</span><br><span class="line">7. 0 MB stacks：栈的大小</span><br><span class="line">8. 0 MB globaks：全局变量的大小</span><br><span class="line">9. 8 P：CPU核数</span><br><span class="line">10. GC forced：由runtime.GC()强制执行</span><br><span class="line">11. 系统内存回收信息：scvg0: inuse: 6, idle: 12, sys: 18, released: 0, consumed: 18 (MB)</span><br><span class="line">- inuse：使用多少M内存</span><br><span class="line">- idle：剩下要清除的内存</span><br><span class="line">- sys：系统映射的内存</span><br><span class="line">- released：释放的系统内存</span><br><span class="line">- consumed：申请的系统内存</span><br></pre></td></tr></table></figure>
 
-      
     </div>
 
     
@@ -230,328 +235,25 @@
     
 
     <footer class="post-footer">
-        <div class="post-eof"></div>
-      
+          <div class="post-tags">
+              <a href="/tags/golang/" rel="tag"># golang</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/12/05/zichao/" rel="prev" title="自嘲">
+                  <i class="fa fa-chevron-left"></i> 自嘲
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
     </footer>
   </article>
 </div>
 
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://nicolerobin.top/2022/12/05/zichao/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="robin zhang">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="听香水榭">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 听香水榭">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/12/05/zichao/" class="post-title-link" itemprop="url">自嘲</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-12-05 06:22:01" itemprop="dateCreated datePublished" datetime="2022-12-05T06:22:01+08:00">2022-12-05</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-09 13:38:30" itemprop="dateModified" datetime="2022-12-09T13:38:30+08:00">2022-12-09</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="自嘲"><a href="#自嘲" class="headerlink" title="自嘲"></a>自嘲</h2><p>本是后山人，偶做前堂客。<br>醉舞经阁半卷书，坐井说天阔。<br>大志戏功名，海斗量福祸。<br>论到囊中羞涩时，怒指乾坤错。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://nicolerobin.top/2022/06/18/chibihuaigu/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="robin zhang">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="听香水榭">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 听香水榭">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/06/18/chibihuaigu/" class="post-title-link" itemprop="url">赤壁怀古</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-06-18 02:53:33" itemprop="dateCreated datePublished" datetime="2022-06-18T02:53:33+08:00">2022-06-18</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-09 13:38:30" itemprop="dateModified" datetime="2022-12-09T13:38:30+08:00">2022-12-09</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="赤壁怀古"><a href="#赤壁怀古" class="headerlink" title="赤壁怀古"></a>赤壁怀古</h2><p>大江东去，浪淘尽，千古风流人物。<br>故垒西边，人道是，三国周郎赤壁。<br>乱石穿空，惊涛拍案，卷起千堆雪。<br>江山如画，一时多少豪杰。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://nicolerobin.top/2018/02/01/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="robin zhang">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="听香水榭">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 听香水榭">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2018/02/01/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2018-02-01 10:44:23" itemprop="dateCreated datePublished" datetime="2018-02-01T10:44:23+08:00">2018-02-01</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-09 13:38:30" itemprop="dateModified" datetime="2022-12-09T13:38:30+08:00">2022-12-09</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>C</p>
-<figure class="highlight c"><figcaption><span>hello_world.c</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span> **argv)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Hello world!\n&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>C++ </p>
-<figure class="highlight cpp"><figcaption><span>hello_world.cpp</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span> **argv)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;Hello world!&quot;</span> &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>python</p>
-<figure class="highlight python"><figcaption><span>hello_world.py</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span> <span class="string">&#x27;Hello world!&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<p>shell</p>
-<figure class="highlight shell"><figcaption><span>hello_world.sh</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &#x27;Hello world!&#x27;</span><br></pre></td></tr></table></figure>
-
-<p>go</p>
-<figure class="highlight go"><figcaption><span>hello_world.go</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    fmt.Println(<span class="string">&quot;hello world!&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://nicolerobin.top/2018/01/31/dingfengbo/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="robin zhang">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="听香水榭">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 听香水榭">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2018/01/31/dingfengbo/" class="post-title-link" itemprop="url">定风波</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2018-01-31 22:07:50" itemprop="dateCreated datePublished" datetime="2018-01-31T22:07:50+08:00">2018-01-31</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-09 13:38:30" itemprop="dateModified" datetime="2022-12-09T13:38:30+08:00">2022-12-09</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="定风波"><a href="#定风波" class="headerlink" title="定风波"></a>定风波</h2><p>莫听穿林打叶声，<br>何妨吟啸且徐行。<br>竹杖芒鞋轻胜马。<br>谁怕！一蓑烟雨任平生。<br>料峭春风吹酒醒，<br>微冷，山头斜照却相迎。<br>回首向来萧瑟处。<br>归去，也无风雨也无晴。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
 
 
 
