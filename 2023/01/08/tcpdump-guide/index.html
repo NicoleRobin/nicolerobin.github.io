@@ -20,29 +20,28 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"nicolerobin.top","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.14.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="赤壁怀古大江东去，浪淘尽，千古风流人物。故垒西边，人道是，三国周郎赤壁。乱石穿空，惊涛拍案，卷起千堆雪。江山如画，一时多少豪杰。">
+    <meta name="description" content="[[使用指南]] 1、运行下面命令从所有网卡中捕获数据包： tcpdump -i any 2、从指定网卡中捕获数据包 tcpdum -i eth0 3、指定网卡、IP地址、写入文件 tcpdump -i eth0 host 10.19.150.242 -w datadump.cap 4、指定网卡、源IP及目的IP、写入文件 tcpdump -i eth0 src host 10.10.100.1">
 <meta property="og:type" content="article">
-<meta property="og:title" content="赤壁怀古">
-<meta property="og:url" content="http://nicolerobin.top/2022/06/18/chibihuaigu/index.html">
+<meta property="og:title" content="tcpdump使用指南">
+<meta property="og:url" content="http://nicolerobin.top/2023/01/08/tcpdump-guide/index.html">
 <meta property="og:site_name" content="听香水榭">
-<meta property="og:description" content="赤壁怀古大江东去，浪淘尽，千古风流人物。故垒西边，人道是，三国周郎赤壁。乱石穿空，惊涛拍案，卷起千堆雪。江山如画，一时多少豪杰。">
+<meta property="og:description" content="[[使用指南]] 1、运行下面命令从所有网卡中捕获数据包： tcpdump -i any 2、从指定网卡中捕获数据包 tcpdum -i eth0 3、指定网卡、IP地址、写入文件 tcpdump -i eth0 host 10.19.150.242 -w datadump.cap 4、指定网卡、源IP及目的IP、写入文件 tcpdump -i eth0 src host 10.10.100.1">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-06-17T18:53:33.000Z">
-<meta property="article:modified_time" content="2022-12-09T05:38:30.418Z">
+<meta property="article:published_time" content="2023-01-07T16:09:58.000Z">
+<meta property="article:modified_time" content="2023-01-07T16:10:40.770Z">
 <meta property="article:author" content="robin zhang">
-<meta property="article:tag" content="诗词">
-<meta property="article:tag" content="苏东坡">
+<meta property="article:tag" content="使用指南">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://nicolerobin.top/2022/06/18/chibihuaigu/">
+<link rel="canonical" href="http://nicolerobin.top/2023/01/08/tcpdump-guide/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://nicolerobin.top/2022/06/18/chibihuaigu/","path":"2022/06/18/chibihuaigu/","title":"赤壁怀古"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://nicolerobin.top/2023/01/08/tcpdump-guide/","path":"2023/01/08/tcpdump-guide/","title":"tcpdump使用指南"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>赤壁怀古 | 听香水榭</title>
+<title>tcpdump使用指南 | 听香水榭</title>
   
 
 
@@ -117,7 +116,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B5%A4%E5%A3%81%E6%80%80%E5%8F%A4"><span class="nav-number">1.</span> <span class="nav-text">赤壁怀古</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81%E8%BF%90%E8%A1%8C%E4%B8%8B%E9%9D%A2%E5%91%BD%E4%BB%A4%E4%BB%8E%E6%89%80%E6%9C%89%E7%BD%91%E5%8D%A1%E4%B8%AD%E6%8D%95%E8%8E%B7%E6%95%B0%E6%8D%AE%E5%8C%85%EF%BC%9A"><span class="nav-number">1.</span> <span class="nav-text">1、运行下面命令从所有网卡中捕获数据包：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81%E4%BB%8E%E6%8C%87%E5%AE%9A%E7%BD%91%E5%8D%A1%E4%B8%AD%E6%8D%95%E8%8E%B7%E6%95%B0%E6%8D%AE%E5%8C%85"><span class="nav-number">2.</span> <span class="nav-text">2、从指定网卡中捕获数据包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%E3%80%81%E6%8C%87%E5%AE%9A%E7%BD%91%E5%8D%A1%E3%80%81IP%E5%9C%B0%E5%9D%80%E3%80%81%E5%86%99%E5%85%A5%E6%96%87%E4%BB%B6"><span class="nav-number">3.</span> <span class="nav-text">3、指定网卡、IP地址、写入文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4%E3%80%81%E6%8C%87%E5%AE%9A%E7%BD%91%E5%8D%A1%E3%80%81%E6%BA%90IP%E5%8F%8A%E7%9B%AE%E7%9A%84IP%E3%80%81%E5%86%99%E5%85%A5%E6%96%87%E4%BB%B6"><span class="nav-number">4.</span> <span class="nav-text">4、指定网卡、源IP及目的IP、写入文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5%E3%80%81%E6%8C%87%E5%AE%9A%E7%BD%91%E5%8D%A1%E3%80%81%E6%BA%90IP%E6%88%96%E7%9B%AE%E7%9A%84IP%E3%80%81%E5%86%99%E5%85%A5%E6%96%87%E4%BB%B6"><span class="nav-number">5.</span> <span class="nav-text">5、指定网卡、源IP或目的IP、写入文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6%E3%80%81%E6%8C%87%E5%AE%9A%E7%BD%91%E5%8D%A1%E3%80%81tcp%E7%AB%AF%E5%8F%A3%E5%8F%8A%E6%BA%90IP%E5%8F%8A%E7%9B%AE%E7%9A%84IP%E3%80%81%E5%86%99%E5%85%A5%E6%96%87%E4%BB%B6"><span class="nav-number">6.</span> <span class="nav-text">6、指定网卡、tcp端口及源IP及目的IP、写入文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7%E3%80%81%E6%8C%87%E5%AE%9A%E7%BD%91%E5%8D%A1%E3%80%81%E6%8E%92%E9%99%A4IP%E3%80%81%E5%86%99%E5%85%A5%E6%96%87%E4%BB%B6"><span class="nav-number">7.</span> <span class="nav-text">7、指定网卡、排除IP、写入文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8%E3%80%81%E5%8F%AA%E6%8A%93%E5%8F%96syn%E5%8C%85"><span class="nav-number">8.</span> <span class="nav-text">8、只抓取syn包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9%E3%80%81"><span class="nav-number">9.</span> <span class="nav-text">9、</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -174,7 +173,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://nicolerobin.top/2022/06/18/chibihuaigu/">
+    <link itemprop="mainEntityOfPage" href="http://nicolerobin.top/2023/01/08/tcpdump-guide/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -187,12 +186,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="赤壁怀古 | 听香水榭">
+      <meta itemprop="name" content="tcpdump使用指南 | 听香水榭">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          赤壁怀古
+          tcpdump使用指南
         </h1>
 
         <div class="post-meta-container">
@@ -202,15 +201,9 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
+      
 
-      <time title="Created: 2022-06-18 02:53:33" itemprop="dateCreated datePublished" datetime="2022-06-18T02:53:33+08:00">2022-06-18</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-09 13:38:30" itemprop="dateModified" datetime="2022-12-09T13:38:30+08:00">2022-12-09</time>
+      <time title="Created: 2023-01-08 00:09:58 / Modified: 00:10:40" itemprop="dateCreated datePublished" datetime="2023-01-08T00:09:58+08:00">2023-01-08</time>
     </span>
 
   
@@ -223,7 +216,27 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h2 id="赤壁怀古"><a href="#赤壁怀古" class="headerlink" title="赤壁怀古"></a>赤壁怀古</h2><p>大江东去，浪淘尽，千古风流人物。<br>故垒西边，人道是，三国周郎赤壁。<br>乱石穿空，惊涛拍案，卷起千堆雪。<br>江山如画，一时多少豪杰。</p>
+        <ul>
+<li>[[使用指南]]</li>
+<li><h3 id="1、运行下面命令从所有网卡中捕获数据包："><a href="#1、运行下面命令从所有网卡中捕获数据包：" class="headerlink" title="1、运行下面命令从所有网卡中捕获数据包："></a>1、运行下面命令从所有网卡中捕获数据包：</h3></li>
+<li><code>tcpdump -i any</code></li>
+<li><h3 id="2、从指定网卡中捕获数据包"><a href="#2、从指定网卡中捕获数据包" class="headerlink" title="2、从指定网卡中捕获数据包"></a>2、从指定网卡中捕获数据包</h3></li>
+<li><code>tcpdum -i eth0</code></li>
+<li><h3 id="3、指定网卡、IP地址、写入文件"><a href="#3、指定网卡、IP地址、写入文件" class="headerlink" title="3、指定网卡、IP地址、写入文件"></a>3、指定网卡、IP地址、写入文件</h3></li>
+<li><code>tcpdump -i eth0 host 10.19.150.242 -w datadump.cap</code></li>
+<li><h3 id="4、指定网卡、源IP及目的IP、写入文件"><a href="#4、指定网卡、源IP及目的IP、写入文件" class="headerlink" title="4、指定网卡、源IP及目的IP、写入文件"></a>4、指定网卡、源IP及目的IP、写入文件</h3></li>
+<li><code>tcpdump -i eth0 src host 10.10.100.19 and dst host 10.10.100.153 -w datadump.cap</code></li>
+<li><h3 id="5、指定网卡、源IP或目的IP、写入文件"><a href="#5、指定网卡、源IP或目的IP、写入文件" class="headerlink" title="5、指定网卡、源IP或目的IP、写入文件"></a>5、指定网卡、源IP或目的IP、写入文件</h3></li>
+<li><code>tcpdump -i eth0 src host 10.10.100.19 or dst host 10.10.100.153 -w datadump.cap</code></li>
+<li><h3 id="6、指定网卡、tcp端口及源IP及目的IP、写入文件"><a href="#6、指定网卡、tcp端口及源IP及目的IP、写入文件" class="headerlink" title="6、指定网卡、tcp端口及源IP及目的IP、写入文件"></a>6、指定网卡、tcp端口及源IP及目的IP、写入文件</h3></li>
+<li><code>tcpdump -i eth0 tcp port 52312 and src host 10.10.100.19 and dst host 10.10.100.153 -w datadump.cap</code></li>
+<li><h3 id="7、指定网卡、排除IP、写入文件"><a href="#7、指定网卡、排除IP、写入文件" class="headerlink" title="7、指定网卡、排除IP、写入文件"></a>7、指定网卡、排除IP、写入文件</h3></li>
+<li><code>tcpdump -i eth0 host !10.10.100.19 and !10.10.100.153 -w datadump.cap</code></li>
+<li><h3 id="8、只抓取syn包"><a href="#8、只抓取syn包" class="headerlink" title="8、只抓取syn包"></a>8、只抓取syn包</h3></li>
+<li><code>tcpdump -i eth0 tcp[13] == 2 -w datadump.cap</code></li>
+<li>上面命令这么写的原因是tcp头包含20个字节的固定长度的数据，其中控制位位于第13个字节（从0开始计算），而如果控制位包含SYN的话，tcp头的第13个字节的值就是2，即tcp[13] &#x3D;&#x3D; 2。</li>
+<li><h3 id="9、"><a href="#9、" class="headerlink" title="9、"></a>9、</h3></li>
+</ul>
 
     </div>
 
@@ -233,22 +246,18 @@
 
     <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E8%AF%97%E8%AF%8D/" rel="tag"># 诗词</a>
-              <a href="/tags/%E8%8B%8F%E4%B8%9C%E5%9D%A1/" rel="tag"># 苏东坡</a>
+              <a href="/tags/%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/" rel="tag"># 使用指南</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2018/02/01/hello-world/" rel="prev" title="Hello World">
-                  <i class="fa fa-chevron-left"></i> Hello World
+                <a href="/2022/12/13/golang-gc-trace/" rel="prev" title="golang调试、查看gc信息">
+                  <i class="fa fa-chevron-left"></i> golang调试、查看gc信息
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2022/12/05/zichao/" rel="next" title="自嘲">
-                  自嘲 <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
@@ -310,7 +319,7 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
 
-<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"nicolerobin","repo":"nicolerobin.github.io","client_id":"127f5a84a9541b7ae466","client_secret":"0a8f715f4aeb0f5c9b507fb86cb65b9ef596bc02","admin_user":"nicolerobin","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"2a7668a2a40c122c13b638d44b524832"}</script>
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"nicolerobin","repo":"nicolerobin.github.io","client_id":"127f5a84a9541b7ae466","client_secret":"0a8f715f4aeb0f5c9b507fb86cb65b9ef596bc02","admin_user":"nicolerobin","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"13d73b48e7e35cb2a796e35a10d08cd8"}</script>
 <script src="/js/third-party/comments/gitalk.js"></script>
 
 </body>

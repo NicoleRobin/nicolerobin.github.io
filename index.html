@@ -123,13 +123,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-count">6</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -157,6 +157,96 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://nicolerobin.top/2023/01/08/tcpdump-guide/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="robin zhang">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="听香水榭">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 听香水榭">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/01/08/tcpdump-guide/" class="post-title-link" itemprop="url">tcpdump使用指南</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2023-01-08 00:09:58 / Modified: 00:10:40" itemprop="dateCreated datePublished" datetime="2023-01-08T00:09:58+08:00">2023-01-08</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <ul>
+<li>[[使用指南]]</li>
+<li><h3 id="1、运行下面命令从所有网卡中捕获数据包："><a href="#1、运行下面命令从所有网卡中捕获数据包：" class="headerlink" title="1、运行下面命令从所有网卡中捕获数据包："></a>1、运行下面命令从所有网卡中捕获数据包：</h3></li>
+<li><code>tcpdump -i any</code></li>
+<li><h3 id="2、从指定网卡中捕获数据包"><a href="#2、从指定网卡中捕获数据包" class="headerlink" title="2、从指定网卡中捕获数据包"></a>2、从指定网卡中捕获数据包</h3></li>
+<li><code>tcpdum -i eth0</code></li>
+<li><h3 id="3、指定网卡、IP地址、写入文件"><a href="#3、指定网卡、IP地址、写入文件" class="headerlink" title="3、指定网卡、IP地址、写入文件"></a>3、指定网卡、IP地址、写入文件</h3></li>
+<li><code>tcpdump -i eth0 host 10.19.150.242 -w datadump.cap</code></li>
+<li><h3 id="4、指定网卡、源IP及目的IP、写入文件"><a href="#4、指定网卡、源IP及目的IP、写入文件" class="headerlink" title="4、指定网卡、源IP及目的IP、写入文件"></a>4、指定网卡、源IP及目的IP、写入文件</h3></li>
+<li><code>tcpdump -i eth0 src host 10.10.100.19 and dst host 10.10.100.153 -w datadump.cap</code></li>
+<li><h3 id="5、指定网卡、源IP或目的IP、写入文件"><a href="#5、指定网卡、源IP或目的IP、写入文件" class="headerlink" title="5、指定网卡、源IP或目的IP、写入文件"></a>5、指定网卡、源IP或目的IP、写入文件</h3></li>
+<li><code>tcpdump -i eth0 src host 10.10.100.19 or dst host 10.10.100.153 -w datadump.cap</code></li>
+<li><h3 id="6、指定网卡、tcp端口及源IP及目的IP、写入文件"><a href="#6、指定网卡、tcp端口及源IP及目的IP、写入文件" class="headerlink" title="6、指定网卡、tcp端口及源IP及目的IP、写入文件"></a>6、指定网卡、tcp端口及源IP及目的IP、写入文件</h3></li>
+<li><code>tcpdump -i eth0 tcp port 52312 and src host 10.10.100.19 and dst host 10.10.100.153 -w datadump.cap</code></li>
+<li><h3 id="7、指定网卡、排除IP、写入文件"><a href="#7、指定网卡、排除IP、写入文件" class="headerlink" title="7、指定网卡、排除IP、写入文件"></a>7、指定网卡、排除IP、写入文件</h3></li>
+<li><code>tcpdump -i eth0 host !10.10.100.19 and !10.10.100.153 -w datadump.cap</code></li>
+<li><h3 id="8、只抓取syn包"><a href="#8、只抓取syn包" class="headerlink" title="8、只抓取syn包"></a>8、只抓取syn包</h3></li>
+<li><code>tcpdump -i eth0 tcp[13] == 2 -w datadump.cap</code></li>
+<li>上面命令这么写的原因是tcp头包含20个字节的固定长度的数据，其中控制位位于第13个字节（从0开始计算），而如果控制位包含SYN的话，tcp头的第13个字节的值就是2，即tcp[13] &#x3D;&#x3D; 2。</li>
+<li><h3 id="9、"><a href="#9、" class="headerlink" title="9、"></a>9、</h3></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
