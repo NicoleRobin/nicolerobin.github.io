@@ -28,7 +28,7 @@
 <meta property="og:description" content="vim使用技巧移动操作基于行移动123456789101112基础操作：hjkl屏幕行是指的当一行文本过长导致分多行展示时的不同行gj: 向上移动一个屏幕行gk: 向下移动一个屏幕行0: 移动到行首g0: 移动到屏幕行行首^: 移动到行首第一个非空白符g^: 移动屏幕行第一个非空白符$: 移动到行尾g$: 移动到屏幕行行尾ctrl+e:num: 跳转到指定行 参考文档：   1:h motion.">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-04-09T16:57:25.000Z">
-<meta property="article:modified_time" content="2023-04-10T00:58:54.203Z">
+<meta property="article:modified_time" content="2023-06-04T11:26:55.735Z">
 <meta property="article:author" content="robin zhang">
 <meta property="article:tag" content="vim">
 <meta name="twitter:card" content="summary">
@@ -116,7 +116,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#vim%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7"><span class="nav-number">1.</span> <span class="nav-text">vim使用技巧</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A7%BB%E5%8A%A8%E6%93%8D%E4%BD%9C"><span class="nav-number">1.1.</span> <span class="nav-text">移动操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E8%A1%8C%E7%A7%BB%E5%8A%A8"><span class="nav-number">1.1.1.</span> <span class="nav-text">基于行移动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E5%8D%95%E8%AF%8D%E7%A7%BB%E5%8A%A8"><span class="nav-number">1.1.2.</span> <span class="nav-text">基于单词移动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E6%9F%A5%E6%89%BE%E7%9A%84%E7%A7%BB%E5%8A%A8"><span class="nav-number">1.1.3.</span> <span class="nav-text">基于查找的移动</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AA%97%E5%8F%A3%E6%93%8D%E4%BD%9C"><span class="nav-number">1.2.</span> <span class="nav-text">窗口操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%93%E5%86%B2%E5%8C%BA%E6%93%8D%E4%BD%9C"><span class="nav-number">1.3.</span> <span class="nav-text">缓冲区操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%87%E7%AD%BE%E9%A1%B5%E6%93%8D%E4%BD%9C"><span class="nav-number">1.4.</span> <span class="nav-text">标签页操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C"><span class="nav-number">1.5.</span> <span class="nav-text">文件操作</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#vim%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7"><span class="nav-number">1.</span> <span class="nav-text">vim使用技巧</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A7%BB%E5%8A%A8%E6%93%8D%E4%BD%9C"><span class="nav-number">1.1.</span> <span class="nav-text">移动操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E8%A1%8C%E7%A7%BB%E5%8A%A8"><span class="nav-number">1.1.1.</span> <span class="nav-text">基于行移动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E5%8D%95%E8%AF%8D%E7%A7%BB%E5%8A%A8"><span class="nav-number">1.1.2.</span> <span class="nav-text">基于单词移动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E6%9F%A5%E6%89%BE%E7%9A%84%E7%A7%BB%E5%8A%A8"><span class="nav-number">1.1.3.</span> <span class="nav-text">基于查找的移动</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E6%93%8D%E4%BD%9C"><span class="nav-number">1.2.</span> <span class="nav-text">修改操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AA%97%E5%8F%A3%E6%93%8D%E4%BD%9C"><span class="nav-number">1.3.</span> <span class="nav-text">窗口操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%93%E5%86%B2%E5%8C%BA%E6%93%8D%E4%BD%9C"><span class="nav-number">1.4.</span> <span class="nav-text">缓冲区操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%87%E7%AD%BE%E9%A1%B5%E6%93%8D%E4%BD%9C"><span class="nav-number">1.5.</span> <span class="nav-text">标签页操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C"><span class="nav-number">1.6.</span> <span class="nav-text">文件操作</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -201,9 +201,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2023-04-10 00:57:25 / Modified: 08:58:54" itemprop="dateCreated datePublished" datetime="2023-04-10T00:57:25+08:00">2023-04-10</time>
+      <time title="Created: 2023-04-10 00:57:25" itemprop="dateCreated datePublished" datetime="2023-04-10T00:57:25+08:00">2023-04-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2023-06-04 19:26:55" itemprop="dateModified" datetime="2023-06-04T19:26:55+08:00">2023-06-04</time>
     </span>
 
   
@@ -227,6 +233,8 @@
 <h3 id="基于查找的移动"><a href="#基于查找的移动" class="headerlink" title="基于查找的移动"></a>基于查找的移动</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">f&#123;char&#125;: 正向查找指定字符，如果当前行有多个指定字符，则可以通过再次按`;`来继续查找，当跳转过头时可以通过按`,`来回退</span><br><span class="line">F&#123;char&#125;: 反向查找指定字符</span><br><span class="line">t&#123;char&#125;: 正向查找指定字符并跳转到指定字符前一个字符</span><br><span class="line">T&#123;char&#125;: 反向查找指定字符并跳转到指定字符后一个字符</span><br><span class="line">/&#123;word&#125;: 查找指定单词，然后可以按`n`继续正向查找，或者按`N`反向查找</span><br></pre></td></tr></table></figure>
 <p>参考文档：  </p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">:h f</span><br><span class="line">:h ;</span><br><span class="line">:h ,</span><br></pre></td></tr></table></figure>
+
+<h2 id="修改操作"><a href="#修改操作" class="headerlink" title="修改操作"></a>修改操作</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">da&quot;: 删除被括号包裹的内容</span><br><span class="line">di]: 删除被括号包裹的内容</span><br><span class="line">ci&#123;: 修改被大括号包裹的内容</span><br><span class="line">dap: 删除段落</span><br><span class="line">vaw: 高亮选中单词</span><br></pre></td></tr></table></figure>
 
 <h2 id="窗口操作"><a href="#窗口操作" class="headerlink" title="窗口操作"></a>窗口操作</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ctrl+w s: 水平拆分窗口</span><br><span class="line">ctrl+w v: 垂直拆分窗口</span><br><span class="line">:split filename</span><br><span class="line">:vsplit filename</span><br><span class="line">:close: 关闭当前窗口</span><br><span class="line">:only: 关闭除当前窗口的其他所有窗口</span><br></pre></td></tr></table></figure>
 
