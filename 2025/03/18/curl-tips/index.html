@@ -20,29 +20,29 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"blog.nicolerobin.top","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.14.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="git使用技巧git commit1git commit --amend # 修改最后一次commit的message  git reset12git reset --soft HEAD^ # 回退到上一个版本，但是不删除commitgit reset --hard HEAD^ # 回退到上一个版本，并且删除commit  git push12git push --force # 强制推送git">
+    <meta name="description" content="curl备忘录一、curl是什么？curl是一个基于命令行的网络工具，可以用来发送HTTP请求。 二、常用命令1、发送GET请求 1curl www.baidu.com  2、输出请求各阶段耗时 12curl -o &#x2F;dev&#x2F;null -s -w &quot;DNS解析: %&amp;#123;time_namelookup&amp;#125;s\n连接建立: %&amp;#123;time_connect&amp;#125;s">
 <meta property="og:type" content="article">
-<meta property="og:title" content="vim-tips">
-<meta property="og:url" content="http://blog.nicolerobin.top/2023/04/10/git-tips/index.html">
+<meta property="og:title" content="curl备忘录">
+<meta property="og:url" content="http://blog.nicolerobin.top/2025/03/18/curl-tips/index.html">
 <meta property="og:site_name" content="听香水榭">
-<meta property="og:description" content="git使用技巧git commit1git commit --amend # 修改最后一次commit的message  git reset12git reset --soft HEAD^ # 回退到上一个版本，但是不删除commitgit reset --hard HEAD^ # 回退到上一个版本，并且删除commit  git push12git push --force # 强制推送git">
+<meta property="og:description" content="curl备忘录一、curl是什么？curl是一个基于命令行的网络工具，可以用来发送HTTP请求。 二、常用命令1、发送GET请求 1curl www.baidu.com  2、输出请求各阶段耗时 12curl -o &#x2F;dev&#x2F;null -s -w &quot;DNS解析: %&amp;#123;time_namelookup&amp;#125;s\n连接建立: %&amp;#123;time_connect&amp;#125;s">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2023-04-09T16:57:25.000Z">
-<meta property="article:modified_time" content="2025-03-18T15:24:32.565Z">
+<meta property="article:published_time" content="2025-03-18T15:33:11.000Z">
+<meta property="article:modified_time" content="2025-03-18T15:35:42.050Z">
 <meta property="article:author" content="robin zhang">
 <meta property="article:tag" content="cheat_sheet">
-<meta property="article:tag" content="git">
+<meta property="article:tag" content="curl">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://blog.nicolerobin.top/2023/04/10/git-tips/">
+<link rel="canonical" href="http://blog.nicolerobin.top/2025/03/18/curl-tips/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://blog.nicolerobin.top/2023/04/10/git-tips/","path":"2023/04/10/git-tips/","title":"vim-tips"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://blog.nicolerobin.top/2025/03/18/curl-tips/","path":"2025/03/18/curl-tips/","title":"curl备忘录"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>vim-tips | 听香水榭</title>
+<title>curl备忘录 | 听香水榭</title>
   
 
 
@@ -117,7 +117,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#git%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7"><span class="nav-number">1.</span> <span class="nav-text">git使用技巧</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#git-commit"><span class="nav-number">1.1.</span> <span class="nav-text">git commit</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git-reset"><span class="nav-number">1.2.</span> <span class="nav-text">git reset</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git-push"><span class="nav-number">1.3.</span> <span class="nav-text">git push</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#curl%E5%A4%87%E5%BF%98%E5%BD%95"><span class="nav-number">1.</span> <span class="nav-text">curl备忘录</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81curl%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">1.1.</span> <span class="nav-text">一、curl是什么？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="nav-number">1.2.</span> <span class="nav-text">二、常用命令</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -130,13 +130,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-count">14</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-count">17</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -174,7 +174,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://blog.nicolerobin.top/2023/04/10/git-tips/">
+    <link itemprop="mainEntityOfPage" href="http://blog.nicolerobin.top/2025/03/18/curl-tips/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -187,12 +187,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="vim-tips | 听香水榭">
+      <meta itemprop="name" content="curl备忘录 | 听香水榭">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          vim-tips
+          curl备忘录
         </h1>
 
         <div class="post-meta-container">
@@ -202,15 +202,9 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
+      
 
-      <time title="Created: 2023-04-10 00:57:25" itemprop="dateCreated datePublished" datetime="2023-04-10T00:57:25+08:00">2023-04-10</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-03-18 23:24:32" itemprop="dateModified" datetime="2025-03-18T23:24:32+08:00">2025-03-18</time>
+      <time title="Created: 2025-03-18 23:33:11 / Modified: 23:35:42" itemprop="dateCreated datePublished" datetime="2025-03-18T23:33:11+08:00">2025-03-18</time>
     </span>
 
   
@@ -223,11 +217,16 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="git使用技巧"><a href="#git使用技巧" class="headerlink" title="git使用技巧"></a>git使用技巧</h1><h2 id="git-commit"><a href="#git-commit" class="headerlink" title="git commit"></a><code>git commit</code></h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit --amend # 修改最后一次commit的message</span><br></pre></td></tr></table></figure>
+        <h1 id="curl备忘录"><a href="#curl备忘录" class="headerlink" title="curl备忘录"></a>curl备忘录</h1><h2 id="一、curl是什么？"><a href="#一、curl是什么？" class="headerlink" title="一、curl是什么？"></a>一、curl是什么？</h2><p>curl是一个基于命令行的网络工具，可以用来发送HTTP请求。</p>
+<h2 id="二、常用命令"><a href="#二、常用命令" class="headerlink" title="二、常用命令"></a>二、常用命令</h2><p>1、发送GET请求</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl www.baidu.com</span><br></pre></td></tr></table></figure>
 
-<h2 id="git-reset"><a href="#git-reset" class="headerlink" title="git reset"></a><code>git reset</code></h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git reset --soft HEAD^ # 回退到上一个版本，但是不删除commit</span><br><span class="line">git reset --hard HEAD^ # 回退到上一个版本，并且删除commit</span><br></pre></td></tr></table></figure>
+<p>2、输出请求各阶段耗时</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -o /dev/null -s -w &quot;DNS解析: %&#123;time_namelookup&#125;s\n连接建立: %&#123;time_connect&#125;s\nSSL握手: %&#123;time_appconnect&#125;s\n服务器响应: %&#123;time_starttransfer&#125;s\n总时间: %&#123;time_total&#125;s\n&quot; https://example.com</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<h2 id="git-push"><a href="#git-push" class="headerlink" title="git push"></a><code>git push</code></h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git push --force # 强制推送</span><br><span class="line">git push --force-with-lease # 推荐使用</span><br></pre></td></tr></table></figure>
+<p>3、输出header</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -I www.baidu.com # 只输出header</span><br><span class="line">curl -i www.baidu.com # 输出header和body</span><br></pre></td></tr></table></figure>
+
     </div>
 
     
@@ -237,21 +236,18 @@
     <footer class="post-footer">
           <div class="post-tags">
               <a href="/tags/cheat-sheet/" rel="tag"># cheat_sheet</a>
-              <a href="/tags/git/" rel="tag"># git</a>
+              <a href="/tags/curl/" rel="tag"># curl</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2023/01/08/tcpdump-guide/" rel="prev" title="tcpdump使用指南">
-                  <i class="fa fa-chevron-left"></i> tcpdump使用指南
+                <a href="/2025/03/18/git-tips/" rel="prev" title="git备忘录">
+                  <i class="fa fa-chevron-left"></i> git备忘录
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2023/04/10/vim-tips/" rel="next" title="vim-tips">
-                  vim-tips <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
@@ -313,7 +309,7 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
 
-<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"nicolerobin","repo":"nicolerobin.github.io","client_id":"127f5a84a9541b7ae466","client_secret":"0a8f715f4aeb0f5c9b507fb86cb65b9ef596bc02","admin_user":"nicolerobin","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"f99a480bb27b4bda1458c0c6ff3e5a4b"}</script>
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"nicolerobin","repo":"nicolerobin.github.io","client_id":"127f5a84a9541b7ae466","client_secret":"0a8f715f4aeb0f5c9b507fb86cb65b9ef596bc02","admin_user":"nicolerobin","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"6694316517685d5a83204a6a504f2416"}</script>
 <script src="/js/third-party/comments/gitalk.js"></script>
 
 </body>

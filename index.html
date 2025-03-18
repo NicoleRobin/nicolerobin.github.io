@@ -123,13 +123,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-count">14</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-count">17</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -157,6 +157,157 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://blog.nicolerobin.top/2025/03/18/curl-tips/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="robin zhang">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="听香水榭">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 听香水榭">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/03/18/curl-tips/" class="post-title-link" itemprop="url">curl备忘录</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2025-03-18 23:33:11 / Modified: 23:35:42" itemprop="dateCreated datePublished" datetime="2025-03-18T23:33:11+08:00">2025-03-18</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="curl备忘录"><a href="#curl备忘录" class="headerlink" title="curl备忘录"></a>curl备忘录</h1><h2 id="一、curl是什么？"><a href="#一、curl是什么？" class="headerlink" title="一、curl是什么？"></a>一、curl是什么？</h2><p>curl是一个基于命令行的网络工具，可以用来发送HTTP请求。</p>
+<h2 id="二、常用命令"><a href="#二、常用命令" class="headerlink" title="二、常用命令"></a>二、常用命令</h2><p>1、发送GET请求</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl www.baidu.com</span><br></pre></td></tr></table></figure>
+
+<p>2、输出请求各阶段耗时</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -o /dev/null -s -w &quot;DNS解析: %&#123;time_namelookup&#125;s\n连接建立: %&#123;time_connect&#125;s\nSSL握手: %&#123;time_appconnect&#125;s\n服务器响应: %&#123;time_starttransfer&#125;s\n总时间: %&#123;time_total&#125;s\n&quot; https://example.com</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>3、输出header</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -I www.baidu.com # 只输出header</span><br><span class="line">curl -i www.baidu.com # 输出header和body</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://blog.nicolerobin.top/2025/03/18/git-tips/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="robin zhang">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="听香水榭">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 听香水榭">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/03/18/git-tips/" class="post-title-link" itemprop="url">git备忘录</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2025-03-18 00:57:25 / Modified: 23:32:03" itemprop="dateCreated datePublished" datetime="2025-03-18T00:57:25+08:00">2025-03-18</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="git使用技巧"><a href="#git使用技巧" class="headerlink" title="git使用技巧"></a>git使用技巧</h1><h2 id="git-commit"><a href="#git-commit" class="headerlink" title="git commit"></a><code>git commit</code></h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit --amend # 修改最后一次commit的message</span><br></pre></td></tr></table></figure>
+
+<h2 id="git-reset"><a href="#git-reset" class="headerlink" title="git reset"></a><code>git reset</code></h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git reset --soft HEAD^ # 回退到上一个版本，但是不删除commit</span><br><span class="line">git reset --hard HEAD^ # 回退到上一个版本，并且删除commit</span><br></pre></td></tr></table></figure>
+
+<h2 id="git-push"><a href="#git-push" class="headerlink" title="git push"></a><code>git push</code></h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git push --force # 强制推送</span><br><span class="line">git push --force-with-lease # 推荐使用</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -261,7 +412,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/11/02/systemctl-cheat-sheet/" class="post-title-link" itemprop="url">systemctl_cheat_sheet</a>
+          <a href="/2024/11/02/systemctl-cheat-sheet/" class="post-title-link" itemprop="url">systemctl备忘录</a>
         </h2>
 
         <div class="post-meta-container">
@@ -279,7 +430,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-03-18 23:20:10" itemprop="dateModified" datetime="2025-03-18T23:20:10+08:00">2025-03-18</time>
+      <time title="Modified: 2025-03-18 23:31:19" itemprop="dateModified" datetime="2025-03-18T23:31:19+08:00">2025-03-18</time>
     </span>
 
   
@@ -336,7 +487,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/11/02/yum-cheat-sheet/" class="post-title-link" itemprop="url">yum_cheat_sheet</a>
+          <a href="/2024/11/02/yum-cheat-sheet/" class="post-title-link" itemprop="url">yum备忘录</a>
         </h2>
 
         <div class="post-meta-container">
@@ -354,7 +505,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-03-18 23:20:10" itemprop="dateModified" datetime="2025-03-18T23:20:10+08:00">2025-03-18</time>
+      <time title="Modified: 2025-03-18 23:30:37" itemprop="dateModified" datetime="2025-03-18T23:30:37+08:00">2025-03-18</time>
     </span>
 
   
@@ -433,7 +584,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-03-18 23:24:13" itemprop="dateModified" datetime="2025-03-18T23:24:13+08:00">2025-03-18</time>
+      <time title="Modified: 2025-03-18 23:31:07" itemprop="dateModified" datetime="2025-03-18T23:31:07+08:00">2025-03-18</time>
     </span>
 
   
@@ -601,7 +752,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/04/10/vim-tips/" class="post-title-link" itemprop="url">vim-tips</a>
+          <a href="/2023/04/10/vim-tips/" class="post-title-link" itemprop="url">vim备忘录</a>
         </h2>
 
         <div class="post-meta-container">
@@ -619,7 +770,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-03-18 23:20:10" itemprop="dateModified" datetime="2025-03-18T23:20:10+08:00">2025-03-18</time>
+      <time title="Modified: 2025-03-18 23:30:49" itemprop="dateModified" datetime="2025-03-18T23:30:49+08:00">2025-03-18</time>
     </span>
 
   
@@ -681,85 +832,6 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://blog.nicolerobin.top/2023/04/10/git-tips/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="robin zhang">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="听香水榭">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 听香水榭">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/04/10/git-tips/" class="post-title-link" itemprop="url">vim-tips</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2023-04-10 00:57:25" itemprop="dateCreated datePublished" datetime="2023-04-10T00:57:25+08:00">2023-04-10</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-03-18 23:24:32" itemprop="dateModified" datetime="2025-03-18T23:24:32+08:00">2025-03-18</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="git使用技巧"><a href="#git使用技巧" class="headerlink" title="git使用技巧"></a>git使用技巧</h1><h2 id="git-commit"><a href="#git-commit" class="headerlink" title="git commit"></a><code>git commit</code></h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit --amend # 修改最后一次commit的message</span><br></pre></td></tr></table></figure>
-
-<h2 id="git-reset"><a href="#git-reset" class="headerlink" title="git reset"></a><code>git reset</code></h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git reset --soft HEAD^ # 回退到上一个版本，但是不删除commit</span><br><span class="line">git reset --hard HEAD^ # 回退到上一个版本，并且删除commit</span><br></pre></td></tr></table></figure>
-
-<h2 id="git-push"><a href="#git-push" class="headerlink" title="git push"></a><code>git push</code></h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git push --force # 强制推送</span><br><span class="line">git push --force-with-lease # 推荐使用</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://blog.nicolerobin.top/2023/01/08/tcpdump-guide/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -778,7 +850,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/01/08/tcpdump-guide/" class="post-title-link" itemprop="url">tcpdump使用指南</a>
+          <a href="/2023/01/08/tcpdump-guide/" class="post-title-link" itemprop="url">tcpdump备忘录</a>
         </h2>
 
         <div class="post-meta-container">
@@ -796,7 +868,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-03-18 23:23:16" itemprop="dateModified" datetime="2025-03-18T23:23:16+08:00">2025-03-18</time>
+      <time title="Modified: 2025-03-18 23:31:33" itemprop="dateModified" datetime="2025-03-18T23:31:33+08:00">2025-03-18</time>
     </span>
 
   
@@ -918,82 +990,6 @@
 <li><a target="_blank" rel="noopener" href="https://allegro.tech/2016/03/writing-fast-cache-service-in-go.html/">Writing a very fast cache service with millions of entries in Go</a></li>
 <li><a target="_blank" rel="noopener" href="https://pkg.go.dev/github.com/glycerine/offheap">offheap</a></li>
 </ol>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://blog.nicolerobin.top/2022/12/05/zichao/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="robin zhang">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="听香水榭">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 听香水榭">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/12/05/zichao/" class="post-title-link" itemprop="url">自嘲</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-12-05 06:22:01" itemprop="dateCreated datePublished" datetime="2022-12-05T06:22:01+08:00">2022-12-05</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-09 13:38:30" itemprop="dateModified" datetime="2022-12-09T13:38:30+08:00">2022-12-09</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="自嘲"><a href="#自嘲" class="headerlink" title="自嘲"></a>自嘲</h2><p>本是后山人，偶做前堂客。<br>醉舞经阁半卷书，坐井说天阔。<br>大志戏功名，海斗量福祸。<br>论到囊中羞涩时，怒指乾坤错。</p>
 
       
     </div>
